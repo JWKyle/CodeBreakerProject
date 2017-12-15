@@ -10,6 +10,14 @@ function guess() {
       return;
     }
     attempt.value++; //counter
+
+    if getResults(input){
+      setMessage('You Cracked the Code!');
+    } else if(attempt.value > 9) {
+      setMessage('You did not crack the code.  Game Over!');
+    } else {
+      setMessage("Nope!  Try again!")
+    }
 }
 // Populates new hidden number, and resets counter
 function setHiddenFields() {
@@ -48,8 +56,12 @@ function getResults(input) {
   html += '</div></div>'
   document.getElementById('results').innerHTML += html; //Add to page
   if(input == answer.value){
-    return true;
+    return true; // Win Condition
   }
   return false;
+}
+
+function showAnswer(success) {
+  
 }
 //implement new functions here
