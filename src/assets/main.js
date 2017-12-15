@@ -9,7 +9,7 @@ function guess() {
     if(!validateInput(input.value)){
       return;
     }
-    attempt.value++;
+    attempt.value++; //counter
 }
 // Populates new hidden number, and resets counter
 function setHiddenFields() {
@@ -30,5 +30,22 @@ function validateInput(input) {
     return false;
   }
   return true;
+}
+
+function getResults(input) {
+  let html = '<div class="row"><span class="col-md-6">' + input + '</span><div class="col-md-6">';
+  for(i = 0, i < input.length, i++){
+    if(input.charAt(i) == answer.value.charAt(i)) {
+      html += '<span class="glyphicon glyphicon-ok"></span>'
+    } //Correct guess in Correct possition
+    else if (answer.value.indexOf(input.charAt(i)) > -1) {
+      html += '<span class="glyphicon glyphicon-transfer"></span>'
+    } //Correct guess in incorrect possition
+    else {
+      html += '<span class="glyphicon glyphicon-remove"></span>'
+    } //Incorrect Guess
+  }
+  html += '</div></div>'
+  document.getElementById('results').innerHTML += html; //Add to page
 }
 //implement new functions here
