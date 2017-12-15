@@ -13,7 +13,7 @@ function guess() {
 }
 // Populates new hidden number, and resets counter
 function setHiddenFields() {
-    answer.value = Math.floor(Math.random()*10000).toString; // Converted to string to make sure "0" in front of solution are shown
+    answer.value = Math.floor(Math.random()*10000).toString(); // Converted to string to make sure "0" in front of solution are shown
     while(answer.value.length < 4) {
       answer.vale = "0" + answer.value; //adds '0' to front of number
     }
