@@ -19,4 +19,8 @@ function setHiddenFields() {
 function setMessage(){
   document.getElementById('message').innerHTML = message;
 }
+
+function validateInput(input) {
+
+}
 //implement new functions here
