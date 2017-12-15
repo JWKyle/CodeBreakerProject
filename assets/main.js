@@ -47,5 +47,9 @@ function getResults(input) {
   }
   html += '</div></div>'
   document.getElementById('results').innerHTML += html; //Add to page
+  if(input == answer.value){
+    return true;
+  }
+  return false;
 }
 //implement new functions here
