@@ -181,7 +181,7 @@ describe('CodeBreaker :', () => {
       document.getElementById('attempt').value = '1';
       document.getElementById('user-guess').value = '1234';
       window.guess();
-      assert(document.getElementById('message').innerHTML == 'You Win! :)', 'didn\'t set the message to "You Win! :)" when user input matched element `answer`\'s `value`');
+      assert(document.getElementById('message').innerHTML == 'You Cracked the Code!', 'didn\'t set the message to "You Cracked the Code!" when user input matched element `answer`\'s `value`');
     });
 
     it('should call `setMessage` with the value "You Lose! :(" when element `attempt`\'s `value` is 10 or more and `getResurts` returns false. @loseCondition', function(){
@@ -190,16 +190,16 @@ describe('CodeBreaker :', () => {
       document.getElementById('attempt').value = '10';
       document.getElementById('user-guess').value = '4321';
       window.guess();
-      assert(document.getElementById('message').innerHTML == 'You Lose! :(', 'didn\'t set the message to "You Lose! :(" when user input did not match element `answer`\'s `value` and `attempt`\'s `value` was 10 or more.');
+      assert(document.getElementById('message').innerHTML == 'You did not crack the code.  Game Over!', 'didn\'t set the message to "You did not crack the code.  Game Over!" when user input did not match element `answer`\'s `value` and `attempt`\'s `value` was 10 or more.');
     });
 
-    it('should call `setMessage` with the value "Incorrect, try again." when element `answer`\'s `value` does not match user input, but `attempt`\'s `value` is less than 10. @tryAgain', function(){
+    it('should call `setMessage` with the value "Nope!  Try again!" when element `answer`\'s `value` does not match user input, but `attempt`\'s `value` is less than 10. @tryAgain', function(){
       assert(typeof window.getResults === "function",'a function named `getResults` was not found.');
       document.getElementById('answer').value = '1234';
       document.getElementById('attempt').value = '1';
       document.getElementById('user-guess').value = '4321';
       window.guess();
-      assert(document.getElementById('message').innerHTML == 'Incorrect, try again.', 'didn\'t set the message to "Incorrect, try again." when user input did not match element `answer`\'s `value` and `attempt`\'s `value` was less than 10.');
+      assert(document.getElementById('message').innerHTML == 'Nope!  Try again!', 'didn\'t set the message to "Nope!  Try again!" when user input did not match element `answer`\'s `value` and `attempt`\'s `value` was less than 10.');
     });
   });
 
