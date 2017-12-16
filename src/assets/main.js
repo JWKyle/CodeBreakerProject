@@ -4,7 +4,7 @@ let attempt = document.getElementById('attempt');
 function guess() {
     let input = document.getElementById('user-guess');
     if(answer.value == '' || attempt.value == '') {
-      setHiddenFields;
+      setHiddenFields();
     }
     if(!validateInput(input.value)){
       return;
@@ -32,7 +32,7 @@ function setHiddenFields() {
     attempt.value = "0";
 }
 // Communication with user
-function setMessage(){
+function setMessage(message){
   document.getElementById('message').innerHTML = message;
 }
 // Makes sure the user gives 4 digits for their guess to be valid
