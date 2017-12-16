@@ -11,7 +11,7 @@ function guess() {
     }
     attempt.value++; //counter
 
-    if getResults(input){
+    if(getResults(input.value)) {
       setMessage('You Cracked the Code!');
       showAnswer(true);
       showReplay();
@@ -46,7 +46,7 @@ function validateInput(input) {
 
 function getResults(input) {
   let html = '<div class="row"><span class="col-md-6">' + input + '</span><div class="col-md-6">';
-  for(i = 0, i < input.length, i++){
+  for(i = 0; i < input.length; i++) {
     if(input.charAt(i) == answer.value.charAt(i)) {
       html += '<span class="glyphicon glyphicon-ok"></span>';
     } //Correct guess in Correct possition
