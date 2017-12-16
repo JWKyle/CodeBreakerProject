@@ -4,12 +4,24 @@ let attempt = document.getElementById('attempt');
 function guess() {
     let input = document.getElementById('user-guess');
     if(answer.value == '' || attempt.value == '') {
-      setHiddenFields
+      setHiddenFields;
     }
     if(!validateInput(input.value)){
       return;
     }
     attempt.value++; //counter
+
+    if(getResults(input.value)) {
+      setMessage('You Cracked the Code!');
+      showAnswer(true);
+      showReplay();
+    } else if(attempt.value > 9) {
+      setMessage('You did not crack the code.  Game Over!');
+      showAnswer(false);
+      showReplay();
+    } else {
+      setMessage("Nope!  Try again!");
+    }
 }
 // Populates new hidden number, and resets counter
 function setHiddenFields() {
@@ -17,7 +29,7 @@ function setHiddenFields() {
     while(answer.value.length < 4) {
       answer.vale = "0" + answer.value; //adds '0' to front of number
     }
-    attempt.value = "0"
+    attempt.value = "0";
 }
 // Communication with user
 function setMessage(){
@@ -34,22 +46,37 @@ function validateInput(input) {
 
 function getResults(input) {
   let html = '<div class="row"><span class="col-md-6">' + input + '</span><div class="col-md-6">';
-  for(i = 0, i < input.length, i++){
+  for(i = 0; i < input.length; i++) {
     if(input.charAt(i) == answer.value.charAt(i)) {
-      html += '<span class="glyphicon glyphicon-ok"></span>'
+      html += '<span class="glyphicon glyphicon-ok"></span>';
     } //Correct guess in Correct possition
     else if (answer.value.indexOf(input.charAt(i)) > -1) {
-      html += '<span class="glyphicon glyphicon-transfer"></span>'
+      html += '<span class="glyphicon glyphicon-transfer"></span>';
     } //Correct guess in incorrect possition
     else {
-      html += '<span class="glyphicon glyphicon-remove"></span>'
+      html += '<span class="glyphicon glyphicon-remove"></span>';
     } //Incorrect Guess
   }
   html += '</div></div>'
   document.getElementById('results').innerHTML += html; //Add to page
   if(input == answer.value){
-    return true;
+    return true; // Win Condition
   }
   return false;
+}
+
+function showAnswer(success) {
+  let code = document.getElementById('code');
+  if(success) {
+    code.className += ' success';
+  } else {
+    code.className += ' failure';
+  }
+  code.innerHTML = answer.value;
+}
+
+function showReplay() {
+    document.getElementById('guessing-div').style.display = 'none';
+    document.getElementById('replay-div').style.display = 'block';
 }
 //implement new functions here
