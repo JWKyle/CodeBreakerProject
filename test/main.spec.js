@@ -132,7 +132,7 @@ describe('CodeBreaker :', () => {
       var spy = sinon.spy(window, "validateInput");
       window.guess();
       assert(window.validateInput.calledOnce,'`validateInput` was not run when `guess` ran.');
-      assert(document.getElementById('message').innerHTML == "Guesses must be exactly 4 characters long.",'When `validateInput` returns `false` the `innerHTML` of `message` should be set to "Guesses must be exactly 4 characters long."');
+      assert(document.getElementById('message').innerHTML == "Your Guess must consist of exactly 4 digits",'When `validateInput` returns `false` the `innerHTML` of `message` should be set to "Guesses must be exactly 4 characters long."');
       assert(document.getElementById('attempt').value == 0, 'The `value` of `attempt` increased when `validateInput` returned `false`, this should only iterate when `validateInput` returns `true`.');
       document.getElementById('user-guess').value = "1234";
       document.getElementById('attempt').value = "0";
