@@ -13,8 +13,12 @@ function guess() {
 
     if getResults(input){
       setMessage('You Cracked the Code!');
+      showAnswer(true);
+      showReplay();
     } else if(attempt.value > 9) {
       setMessage('You did not crack the code.  Game Over!');
+      showAnswer(false);
+      showReplay();
     } else {
       setMessage("Nope!  Try again!");
     }
@@ -69,5 +73,10 @@ function showAnswer(success) {
     code.className += ' failure';
   }
   code.innerHTML = answer.value;
+}
+
+function showReplay() {
+    document.getElementById('guessing-div').style.display = 'none';
+    document.getElementById('replay-div').style.display = 'block';
 }
 //implement new functions here
