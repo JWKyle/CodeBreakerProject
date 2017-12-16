@@ -4,7 +4,7 @@ let attempt = document.getElementById('attempt');
 function guess() {
     let input = document.getElementById('user-guess');
     if(answer.value == '' || attempt.value == '') {
-      setHiddenFields
+      setHiddenFields;
     }
     if(!validateInput(input.value)){
       return;
@@ -16,7 +16,7 @@ function guess() {
     } else if(attempt.value > 9) {
       setMessage('You did not crack the code.  Game Over!');
     } else {
-      setMessage("Nope!  Try again!")
+      setMessage("Nope!  Try again!");
     }
 }
 // Populates new hidden number, and resets counter
@@ -25,7 +25,7 @@ function setHiddenFields() {
     while(answer.value.length < 4) {
       answer.vale = "0" + answer.value; //adds '0' to front of number
     }
-    attempt.value = "0"
+    attempt.value = "0";
 }
 // Communication with user
 function setMessage(){
@@ -44,13 +44,13 @@ function getResults(input) {
   let html = '<div class="row"><span class="col-md-6">' + input + '</span><div class="col-md-6">';
   for(i = 0, i < input.length, i++){
     if(input.charAt(i) == answer.value.charAt(i)) {
-      html += '<span class="glyphicon glyphicon-ok"></span>'
+      html += '<span class="glyphicon glyphicon-ok"></span>';
     } //Correct guess in Correct possition
     else if (answer.value.indexOf(input.charAt(i)) > -1) {
-      html += '<span class="glyphicon glyphicon-transfer"></span>'
+      html += '<span class="glyphicon glyphicon-transfer"></span>';
     } //Correct guess in incorrect possition
     else {
-      html += '<span class="glyphicon glyphicon-remove"></span>'
+      html += '<span class="glyphicon glyphicon-remove"></span>';
     } //Incorrect Guess
   }
   html += '</div></div>'
@@ -62,6 +62,12 @@ function getResults(input) {
 }
 
 function showAnswer(success) {
-  
+  let code = document.getElementById('code');
+  if(success) {
+    code.className += ' success';
+  } else {
+    code.className += ' failure';
+  }
+  code.innerHTML = answer.value;
 }
 //implement new functions here
